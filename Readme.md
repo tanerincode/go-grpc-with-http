@@ -19,7 +19,17 @@ The project is structured as follows:
 - Protocol Buffers Compiler (`protoc`)
 - gRPC Go plugins
 
+ps : _Make sure port 9000 and 8080 are available_
+
 ### Running the Server
+
+First Generate the gRPC code (if not already generated):
+```bash
+make build-protos
+```
+
+
+After This you can run project below commands
 
 ```bash
 make build-and-serve-server platform=linux
@@ -27,4 +37,24 @@ make build-and-serve-server platform=linux
 OR
 ```bash
 make build-and-serve-client platform=darwin
+```
+You can also run the server directly without build :
+```bash
+make run-server
+```
+for client: 
+ps : _make sure the 9000_
+```bash
+make run-client
+```
+
+## Accessing the Health Check
+To trigger the health check, access the following URL in your browser or using a tool like curl:
+```bash
+curl http://localhost:8080/health
+```
+
+If the gRPC server is running and healthy, you should receive a response:
+```json
+{"status":"ok","message":"Service is healthy"}
 ```
