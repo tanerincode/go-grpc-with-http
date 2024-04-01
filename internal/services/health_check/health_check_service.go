@@ -2,6 +2,7 @@ package health_check
 
 import (
 	"context"
+	"log"
 )
 
 // Ensure that HealthCheckServiceServer implements all methods.
@@ -19,6 +20,7 @@ func NewHealthCheckServiceServerImpl() *HealthCheckServiceServerImpl {
 
 // Check implements the HealthCheckServiceServer interface.
 func (srv *HealthCheckServiceServerImpl) Check(ctx context.Context, in *HealthCheckRequest) (*HealthCheckResponse, error) {
+	log.Println("Health check request received")
 	return &HealthCheckResponse{
 		Status:  true,
 		Message: "OK",
